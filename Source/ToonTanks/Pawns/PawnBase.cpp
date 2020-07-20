@@ -22,3 +22,31 @@ APawnBase::APawnBase()
 	ProjectileSpawnPoint = CreateDefaultSubobject<USceneComponent>(TEXT("Projectile Spawn Point"));
 	ProjectileSpawnPoint->SetupAttachment(TurretMesh);
 }
+
+void APawnBase::RotateTurret(FVector LookAtTarget) 
+{
+	// This current Pawns location vector
+	FVector StartLocation = TurretMesh->GetComponentLocation();
+
+	// Get our X, Y of our target at the same height as this Pawn
+	FVector LookAtTargetClean = FVector(LookAtTarget.X, LookAtTarget.Y, StartLocation.Z);
+
+	// To find our rotation we need to find the difference between our target and current location
+	FRotator TurretRotation = FVector( LookAtTargetClean - StartLocation ).Rotation();
+	TurretMesh->SetWorldRotation(TurretRotation);
+}
+
+void APawnBase::Fire() 
+{
+	// Shoot a projectile in the correct direction
+	// ProjectileSpawnPoint->GetForwardVector() ?
+
+	UE_LOG(LogTemp, Warning, TEXT("Fire!"));
+}
+
+void APawnBase::HandleDestruction() 
+{
+	// Play hit animations
+	// subtract health
+	// check death
+}

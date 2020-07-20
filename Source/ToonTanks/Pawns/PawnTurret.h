@@ -6,6 +6,8 @@
 #include "PawnBase.h"
 #include "PawnTurret.generated.h"
 
+class APawnTank;
+
 /**
  * 
  */
@@ -19,16 +21,17 @@ private:
 	float RotateSpeed = 200.f;
 	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Combat", meta = (AllowPrivateAccess = "true"))
 	float FireRate = 2.f;
+	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Combat", meta = (AllowPrivateAccess = "true"))
+	float FireRange = 500.f;
 
 	FQuat RotationDirection;
-
-	void CalculateRotateDirection();
-
-	void Rotate();
-
 	FTimerHandle FireRateTimerHandle;
-	
+	APawnTank* PlayerPawn;
+
+	bool CheckInRange();
 	void CheckFireCondition();
+	float GetDistanceToPlayer();
+
 
 public:
 	APawnTurret();
@@ -40,4 +43,5 @@ protected:
 	// Called when the game starts or when spawned
 	virtual void BeginPlay() override;
 
+	void HandleDestruction() override;
 };

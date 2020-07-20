@@ -32,6 +32,10 @@ void EmptyLinkFunctionForGeneratedCodePawnTurret() {}
 		static const UE4CodeGen_Private::FMetaDataPairParam Class_MetaDataParams[];
 #endif
 #if WITH_METADATA
+		static const UE4CodeGen_Private::FMetaDataPairParam NewProp_FireRange_MetaData[];
+#endif
+		static const UE4CodeGen_Private::FFloatPropertyParams NewProp_FireRange;
+#if WITH_METADATA
 		static const UE4CodeGen_Private::FMetaDataPairParam NewProp_FireRate_MetaData[];
 #endif
 		static const UE4CodeGen_Private::FFloatPropertyParams NewProp_FireRate;
@@ -56,6 +60,14 @@ void EmptyLinkFunctionForGeneratedCodePawnTurret() {}
 	};
 #endif
 #if WITH_METADATA
+	const UE4CodeGen_Private::FMetaDataPairParam Z_Construct_UClass_APawnTurret_Statics::NewProp_FireRange_MetaData[] = {
+		{ "AllowPrivateAccess", "true" },
+		{ "Category", "Combat" },
+		{ "ModuleRelativePath", "Pawns/PawnTurret.h" },
+	};
+#endif
+	const UE4CodeGen_Private::FFloatPropertyParams Z_Construct_UClass_APawnTurret_Statics::NewProp_FireRange = { "FireRange", nullptr, (EPropertyFlags)0x0040000000000005, UE4CodeGen_Private::EPropertyGenFlags::Float, RF_Public|RF_Transient|RF_MarkAsNative, 1, STRUCT_OFFSET(APawnTurret, FireRange), METADATA_PARAMS(Z_Construct_UClass_APawnTurret_Statics::NewProp_FireRange_MetaData, UE_ARRAY_COUNT(Z_Construct_UClass_APawnTurret_Statics::NewProp_FireRange_MetaData)) };
+#if WITH_METADATA
 	const UE4CodeGen_Private::FMetaDataPairParam Z_Construct_UClass_APawnTurret_Statics::NewProp_FireRate_MetaData[] = {
 		{ "AllowPrivateAccess", "true" },
 		{ "Category", "Combat" },
@@ -72,6 +84,7 @@ void EmptyLinkFunctionForGeneratedCodePawnTurret() {}
 #endif
 	const UE4CodeGen_Private::FFloatPropertyParams Z_Construct_UClass_APawnTurret_Statics::NewProp_RotateSpeed = { "RotateSpeed", nullptr, (EPropertyFlags)0x0040000000000005, UE4CodeGen_Private::EPropertyGenFlags::Float, RF_Public|RF_Transient|RF_MarkAsNative, 1, STRUCT_OFFSET(APawnTurret, RotateSpeed), METADATA_PARAMS(Z_Construct_UClass_APawnTurret_Statics::NewProp_RotateSpeed_MetaData, UE_ARRAY_COUNT(Z_Construct_UClass_APawnTurret_Statics::NewProp_RotateSpeed_MetaData)) };
 	const UE4CodeGen_Private::FPropertyParamsBase* const Z_Construct_UClass_APawnTurret_Statics::PropPointers[] = {
+		(const UE4CodeGen_Private::FPropertyParamsBase*)&Z_Construct_UClass_APawnTurret_Statics::NewProp_FireRange,
 		(const UE4CodeGen_Private::FPropertyParamsBase*)&Z_Construct_UClass_APawnTurret_Statics::NewProp_FireRate,
 		(const UE4CodeGen_Private::FPropertyParamsBase*)&Z_Construct_UClass_APawnTurret_Statics::NewProp_RotateSpeed,
 	};
@@ -102,7 +115,7 @@ void EmptyLinkFunctionForGeneratedCodePawnTurret() {}
 		}
 		return OuterClass;
 	}
-	IMPLEMENT_CLASS(APawnTurret, 339014896);
+	IMPLEMENT_CLASS(APawnTurret, 4187628199);
 	template<> TOONTANKS_API UClass* StaticClass<APawnTurret>()
 	{
 		return APawnTurret::StaticClass();

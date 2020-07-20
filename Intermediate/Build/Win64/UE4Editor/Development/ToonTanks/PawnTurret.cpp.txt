@@ -3,6 +3,7 @@ G:\Unreal Projects\ToonTanks\Source\ToonTanks\Pawns\PawnTurret.h
 G:\Unreal Projects\ToonTanks\Source\ToonTanks\Pawns\PawnBase.h
 G:\Unreal Projects\ToonTanks\Intermediate\Build\Win64\UE4Editor\Inc\ToonTanks\PawnBase.generated.h
 G:\Unreal Projects\ToonTanks\Intermediate\Build\Win64\UE4Editor\Inc\ToonTanks\PawnTurret.generated.h
+D:\Epic Games\UE_4.25\Engine\Source\Runtime\Engine\Public\DrawDebugHelpers.h
 D:\Epic Games\UE_4.25\Engine\Source\Runtime\Engine\Classes\Kismet/GameplayStatics.h
 D:\Epic Games\UE_4.25\Engine\Source\Runtime\Engine\Classes\Kismet/KismetSystemLibrary.h
 D:\Epic Games\UE_4.25\Engine\Source\Runtime\CoreUObject\Public\UObject/PropertyAccessUtil.h
@@ -14,3 +15,5 @@ D:\Epic Games\UE_4.25\Engine\Intermediate\Build\Win64\UE4Editor\Inc\Engine\Dialo
 D:\Epic Games\UE_4.25\Engine\Source\Runtime\Engine\Classes\Kismet\GameplayStaticsTypes.h
 D:\Epic Games\UE_4.25\Engine\Intermediate\Build\Win64\UE4Editor\Inc\Engine\GameplayStaticsTypes.generated.h
 D:\Epic Games\UE_4.25\Engine\Intermediate\Build\Win64\UE4Editor\Inc\Engine\GameplayStatics.generated.h
+G:\Unreal Projects\ToonTanks\Source\ToonTanks\Pawns\PawnTank.h
+G:\Unreal Projects\ToonTanks\Intermediate\Build\Win64\UE4Editor\Inc\ToonTanks\PawnTank.generated.h
