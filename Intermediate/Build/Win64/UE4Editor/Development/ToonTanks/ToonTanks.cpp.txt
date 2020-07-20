@@ -1,0 +1,2 @@
+G:\Unreal Projects\ToonTanks\Intermediate\Build\Win64\UE4Editor\Development\ToonTanks\Definitions.ToonTanks.h
+G:\Unreal Projects\ToonTanks\Source\ToonTanks\ToonTanks.h
