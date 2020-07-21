@@ -33,14 +33,12 @@ void APawnTank::Tick(float DeltaTime)
 {
 	Super::Tick(DeltaTime);
 
-	Rotate();
+	Turn();
 	Move();
 
 	if(PlayerControllerRef)
 	{
-		FHitResult TraceHitResult;
-		PlayerControllerRef->GetHitResultUnderCursor(ECC_Visibility, false, OUT TraceHitResult);
-		FVector HitLocation = TraceHitResult.ImpactPoint;
+		FVector HitLocation = MouseHitLocation(PlayerControllerRef);
 
 		RotateTurret(HitLocation);
 	}
@@ -52,7 +50,7 @@ void APawnTank::SetupPlayerInputComponent(UInputComponent* PlayerInputComponent)
 	Super::SetupPlayerInputComponent(PlayerInputComponent);
 
 	PlayerInputComponent->BindAxis("MoveForward", this, &APawnTank::CalculateMoveInput);
-	PlayerInputComponent->BindAxis("Turn", this, &APawnTank::CalculateRotateInput);
+	PlayerInputComponent->BindAxis("Turn", this, &APawnTank::CalculateTurnInput);
 	PlayerInputComponent->BindAction("Fire", IE_Pressed, this, &APawnTank::Fire);
 	//PlayerInputComponent->BindAxis("RotateTurret", this, &APawnTank::CalculateMoveInput);
 }
@@ -62,11 +60,11 @@ void APawnTank::CalculateMoveInput(float Value)
 	MoveDirection = FVector(Value * MoveSpeed * GetWorld()->DeltaTimeSeconds, 0, 0);
 }
 
-void APawnTank::CalculateRotateInput(float Value)
+void APawnTank::CalculateTurnInput(float Value)
 {
-	float RotateAmount = Value * RotateSpeed * GetWorld()->DeltaTimeSeconds;
-	FRotator Rotation = FRotator(0.f, RotateAmount, 0.f);
-	RotationDirection = FQuat(Rotation);
+	float TurnAmount = Value * TurnSpeed * GetWorld()->DeltaTimeSeconds;
+	FRotator Rotation = FRotator(0.f, TurnAmount, 0.f);
+	TurnDirection = FQuat(Rotation);
 }
 
 void APawnTank::Move() 
@@ -74,9 +72,9 @@ void APawnTank::Move()
 	AddActorLocalOffset(MoveDirection, true);
 }
 
-void APawnTank::Rotate() 
+void APawnTank::Turn() 
 {
-	AddActorLocalRotation(RotationDirection, true);
+	AddActorLocalRotation(TurnDirection, true);
 }
 
 void APawnTank::HandleDestruction() 

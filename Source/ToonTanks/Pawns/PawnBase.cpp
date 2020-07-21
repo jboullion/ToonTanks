@@ -3,6 +3,7 @@
 
 #include "PawnBase.h"
 #include "Components/CapsuleComponent.h"
+#include "ToonTanks/Actors/ProjectileBase.h"
 
 // Sets default values
 APawnBase::APawnBase()
@@ -40,8 +41,16 @@ void APawnBase::Fire()
 {
 	// Shoot a projectile in the correct direction
 	// ProjectileSpawnPoint->GetForwardVector() ?
+	
+	if (ProjectileClass) 
+	{
+		FVector SpawnLocation = ProjectileSpawnPoint->GetComponentLocation();
+		FRotator SpawnRotation = ProjectileSpawnPoint->GetComponentRotation();
 
-	UE_LOG(LogTemp, Warning, TEXT("Fire!"));
+		AProjectileBase* TempProjectile = GetWorld()->SpawnActor<AProjectileBase>(ProjectileClass, SpawnLocation, SpawnRotation);
+		
+		TempProjectile->SetOwner(this);
+	}
 }
 
 void APawnBase::HandleDestruction() 
@@ -49,4 +58,11 @@ void APawnBase::HandleDestruction()
 	// Play hit animations
 	// subtract health
 	// check death
+}
+
+FVector APawnBase::MouseHitLocation(APlayerController* PlayerControllerRef) 
+{
+	FHitResult TraceHitResult;
+	PlayerControllerRef->GetHitResultUnderCursor(ECC_Visibility, false, OUT TraceHitResult);
+	return TraceHitResult.ImpactPoint;
 }

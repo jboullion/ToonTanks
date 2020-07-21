@@ -24,20 +24,20 @@ private:
 	USpringArmComponent* SpringArm;
 
 	FVector MoveDirection;
-	FQuat RotationDirection;
+	FQuat TurnDirection;
 
 	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Movement", meta = (AllowPrivateAccess = "true"))
 	float MoveSpeed = 400.f;
 	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Movement", meta = (AllowPrivateAccess = "true"))
-	float RotateSpeed = 200.f;
+	float TurnSpeed = 200.f;
 
 	APlayerController* PlayerControllerRef;
 
 	void CalculateMoveInput(float Value);
-	void CalculateRotateInput(float Value);
+	void CalculateTurnInput(float Value);
 
 	void Move();
-	void Rotate();
+	void Turn();
 
 public:
 
