@@ -2,4 +2,7 @@ G:\Unreal Projects\ToonTanks\Intermediate\Build\Win64\UE4Editor\Development\Toon
 D:\Epic Games\UE_4.25\Engine\Source\Runtime\CoreUObject\Public\UObject/GeneratedCppIncludes.h
 D:\Epic Games\UE_4.25\Engine\Source\Runtime\CoreUObject\Public\UObject/MetaData.h
 G:\Unreal Projects\ToonTanks\Source\ToonTanks/Pawns/PawnBase.h
+D:\Epic Games\UE_4.25\Engine\Source\Runtime\Engine\Classes\Particles/ParticleSystem.h
+D:\Epic Games\UE_4.25\Engine\Source\Runtime\Engine\Classes\Particles/ParticlePerfStats.h
+D:\Epic Games\UE_4.25\Engine\Intermediate\Build\Win64\UE4Editor\Inc\Engine\ParticleSystem.generated.h
 G:\Unreal Projects\ToonTanks\Intermediate\Build\Win64\UE4Editor\Inc\ToonTanks\PawnBase.generated.h

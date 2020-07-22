@@ -3,7 +3,9 @@
 
 #include "PawnBase.h"
 #include "Components/CapsuleComponent.h"
+#include "Kismet/GameplayStatics.h"
 #include "ToonTanks/Actors/ProjectileBase.h"
+#include "ToonTanks/Components/HealthComponent.h"
 
 // Sets default values
 APawnBase::APawnBase()
@@ -22,7 +24,12 @@ APawnBase::APawnBase()
 
 	ProjectileSpawnPoint = CreateDefaultSubobject<USceneComponent>(TEXT("Projectile Spawn Point"));
 	ProjectileSpawnPoint->SetupAttachment(TurretMesh);
+
+
+	HealthComponent = CreateDefaultSubobject<UHealthComponent>(TEXT("Health Component"));
+
 }
+
 
 void APawnBase::RotateTurret(FVector LookAtTarget) 
 {
@@ -37,11 +44,10 @@ void APawnBase::RotateTurret(FVector LookAtTarget)
 	TurretMesh->SetWorldRotation(TurretRotation);
 }
 
+
 void APawnBase::Fire() 
 {
-	// Shoot a projectile in the correct direction
-	// ProjectileSpawnPoint->GetForwardVector() ?
-	
+
 	if (ProjectileClass) 
 	{
 		FVector SpawnLocation = ProjectileSpawnPoint->GetComponentLocation();
@@ -53,12 +59,15 @@ void APawnBase::Fire()
 	}
 }
 
+
 void APawnBase::HandleDestruction() 
 {
 	// Play hit animations
-	// subtract health
-	// check death
+	UGameplayStatics::SpawnEmitterAtLocation(this, DeathParticle, GetActorLocation());
+	UGameplayStatics::PlaySoundAtLocation(this, DeathSound, GetActorLocation());
+	GetWorld()->GetFirstPlayerController()->ClientPlayCameraShake(DeathShake);
 }
+
 
 FVector APawnBase::MouseHitLocation(APlayerController* PlayerControllerRef) 
 {
