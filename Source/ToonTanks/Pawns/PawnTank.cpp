@@ -52,7 +52,6 @@ void APawnTank::SetupPlayerInputComponent(UInputComponent* PlayerInputComponent)
 	PlayerInputComponent->BindAxis("MoveForward", this, &APawnTank::CalculateMoveInput);
 	PlayerInputComponent->BindAxis("Turn", this, &APawnTank::CalculateTurnInput);
 	PlayerInputComponent->BindAction("Fire", IE_Pressed, this, &APawnTank::Fire);
-	//PlayerInputComponent->BindAxis("RotateTurret", this, &APawnTank::CalculateMoveInput);
 }
 
 void APawnTank::CalculateMoveInput(float Value)
@@ -80,6 +79,14 @@ void APawnTank::Turn()
 void APawnTank::HandleDestruction() 
 {
 	Super::HandleDestruction();
-	//Destroy();
-	//TODO: HIDE player 
+	bIsPlayerAlive = false;
+
+	SetActorHiddenInGame(true);
+	SetActorTickEnabled(false);
+
+}
+
+bool APawnTank::GetIsPlayerAlive() 
+{
+	return bIsPlayerAlive;
 }

@@ -63,9 +63,12 @@ bool APawnTurret::CheckInRange()
 void APawnTurret::CheckFireCondition() 
 {
 
-	if(!PlayerPawn) return;
+	if( !PlayerPawn || !PlayerPawn->GetIsPlayerAlive() ) 
+	{
+		return;
+	}
 
-	if(CheckInRange())
+	if( CheckInRange() )
 	{
 		Fire();
 	}
